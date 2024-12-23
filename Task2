@@ -1,0 +1,38 @@
+def calculate_average(grades):
+    return sum(grades) / len(grades) if grades else 0
+
+def get_letter_grade(average):
+    if average >= 90:
+        return 'A'
+    elif average >= 80:
+        return 'B'
+    elif average >= 70:
+        return 'C'
+    elif average >= 60:
+        return 'D'
+    else:
+        return 'F'
+
+def calculate_gpa(average):
+    return average / 20  # Assuming a scale of 0-100 for the average
+
+def main():
+    grades = []
+    while True:
+        try:
+            grade = float(input("Enter the grade for the subject (or type 'done' to finish): "))
+            grades.append(grade)
+        except ValueError:
+            break
+
+    if grades:
+        average = calculate_average(grades)
+        letter_grade = get_letter_grade(average)
+        gpa = calculate_gpa(average)
+
+        print(f"\nOverall Average Grade: {average:.2f}")
+        print(f"Letter Grade: {letter_grade}")
+        print(f"GPA: {gpa:.2f}")
+    else:
+        print("No grades entered.")
+main()
